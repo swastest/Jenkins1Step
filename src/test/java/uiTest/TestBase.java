@@ -7,21 +7,32 @@ import helpersAttach.Attach;
 import io.qameta.allure.selenide.AllureSelenide;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.DisplayName;
+import org.openqa.selenium.remote.DesiredCapabilities;
 
 public class TestBase {
 
     @BeforeAll
     static void setUp() {
-        SelenideLogger.addListener("AllureSelenide", new AllureSelenide());
+        SelenideLogger.addListener("AllureSelenide", new AllureSelenide()); //Алюр лисенер
+
         Configuration.baseUrl = "https://demoqa.com";
         Configuration.browserSize = "1920x1080";
-        Configuration.remote = "https://user1:1234@selenoid.autotests.cloud/wd/hub";
+        Configuration.remote = "https://user1:1234@selenoid.autotests.cloud/wd/hub";  // https://логин:пароль@хост/веб-драйвер/и что то там
+        //Добавить видео-пруф-аттач  и  это еще не все, так как надо добавить метод см. ниже в классе addAttachments
+        DesiredCapabilities capabilities = new DesiredCapabilities(); // набор ключей и значений
+        capabilities.setCapability("enableVNC", true); // трнаслировать видео - тру
+        capabilities.setCapability("enableVideo", true); // делать видео - тру
+        Configuration.browserCapabilities = capabilities; // для более тонкой настройки драйвера, иногда подсказывают фрондендеры
     }
 
     @AfterEach
+    @DisplayName("Добавить пруфы")
     void addAttachments (){
         Attach.screenshotAs("Итоговый скрин");
         Attach.pageSource();
         Attach.browserConsoleLogs();
+        Attach.addVideo();  // добавила видео
     }
 }
