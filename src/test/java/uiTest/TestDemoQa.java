@@ -1,6 +1,7 @@
 package uiTest;
 
 import com.codeborne.selenide.Configuration;
+import io.qameta.allure.Allure;
 import io.qameta.allure.Step;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
