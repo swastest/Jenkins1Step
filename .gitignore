@@ -22,7 +22,7 @@
 *.tar.gz
 *.rar
 *.iml
-*.uiTest
+
 
 # Project gen files
 .idea
