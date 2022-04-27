@@ -1,30 +1,21 @@
 package uiTest;
 
-import com.codeborne.selenide.Configuration;
-import io.qameta.allure.Allure;
-import io.qameta.allure.Step;
-import org.junit.jupiter.api.BeforeAll;
+import io.qameta.allure.Owner;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byText;
-import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.open;
+import static com.codeborne.selenide.Selenide.*;
 import static io.qameta.allure.Allure.step;
 import static java.lang.String.format;
 
-public class TestDemoQa {
-
-    @BeforeAll
-    static void setUp() {
-        Configuration.baseUrl = "https://demoqa.com";
-        Configuration.browserSize = "1920x1080";
-    }
-
+public class TestDemoQa extends TestBase {
+    // конфиги убрала в класс TestBase и прописала название класса через extends выше
     @Test
+    @Owner("Kazakova")
     @DisplayName("Старая-добрая формаТест")
-    void Test1() {
+    void test1() {
         String firstName = "Aren",
                 lastName = "Karapetyan",
                 email = "romashka@mail.ru",
@@ -40,6 +31,8 @@ public class TestDemoQa {
 
         step("Открыть форму регистрации", () -> {
             open("/automation-practice-form");
+            executeJavaScript("$('footer').remove()");
+            executeJavaScript("$('#fixedban').remove()");
         });
 
         step("Заполнить форму регистации", () -> {
