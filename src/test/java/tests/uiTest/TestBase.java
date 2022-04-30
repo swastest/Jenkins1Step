@@ -17,8 +17,10 @@ public class TestBase {
     static void setUp() {
         SelenideLogger.addListener("AllureSelenide", new AllureSelenide()); //Алюр лисенер
 
-        Configuration.baseUrl = "https://demoqa.com";
-        Configuration.browserSize = "1920x1080";
+        Configuration.baseUrl = System.getProperty("baseUrl"); // задать в дженкинс
+       // Configuration.baseUrl = "https://demoqa.com";
+        Configuration.browserSize = System.getProperty("browserSize"); // задать в дженкинс
+       // Configuration.browserSize = "1920x1080";
         Configuration.remote = "https://user1:1234@selenoid.autotests.cloud/wd/hub";  // https://логин:пароль@хост/веб-драйвер/и что то там
         //Добавить видео-пруф-аттач  и  это еще не все, так как надо добавить метод см. ниже в классе addAttachments
         DesiredCapabilities capabilities = new DesiredCapabilities(); // набор ключей и значений
@@ -37,3 +39,6 @@ public class TestBase {
         closeWebDriver(); // закрыть веб драйвер, чтобы длина видео была не на полчаса, а на вркемя прохождения теста
     }
 }
+
+//-Dbrowser=$(BROWSER)
+//-DanyText="$(ANY_TEXT)"
