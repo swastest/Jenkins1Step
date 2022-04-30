@@ -1,7 +1,8 @@
-package uiTest;
+package tests.uiTest;
 
 import io.qameta.allure.Owner;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
 import static com.codeborne.selenide.Condition.text;
@@ -14,6 +15,7 @@ public class TestDemoQa extends TestBase {
     // конфиги убрала в класс TestBase и прописала название класса через extends выше
     @Test
     @Owner("Kazakova")
+    @Tag ("demoQaForm")
     @DisplayName("Старая-добрая формаТест")
     void test1() {
         String firstName = "Aren",
@@ -31,7 +33,7 @@ public class TestDemoQa extends TestBase {
 
         step("Открыть форму регистрации", () -> {
             open("/automation-practice-form");
-            executeJavaScript("$('footer').remove()");
+            executeJavaScript("$('footer').remove()"); // пришлось добавить JS код, так как на удаленной машине футтер и реклама все-таки стали помехой
             executeJavaScript("$('#fixedban').remove()");
         });
 

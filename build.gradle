@@ -40,9 +40,10 @@ tasks.withType(JavaCompile) {
 }
 
 tasks.withType(Test) {
+    systemProperties(System.getProperties()) // добавила эту строчку, чтобы можно было менять конфиги, передавая на входе, это типа швейцара на входе)))
     useJUnitPlatform()
 
-    // чтобы логи были симпатичнее
+    // чтобы логи были симпатичнее ТОЛЬКО В КОНСОЛЕ у нас (в алюре не используется, там свое)
     testLogging {
         lifecycle {
             events "started", "skipped", "failed", "standard_error", "standard_out"
@@ -52,9 +53,15 @@ tasks.withType(Test) {
 }
 
 // Работа с тегами
-//task demoqa_tests(type: Test) {
-//    useJUnitPlatform{
-//        includeTags "demoqa"
-//       excludeTags "simple"
-//    }
-//}
+task demoQaForm(type: Test) {
+    useJUnitPlatform {
+        includeTags "demoQaForm"
+//       excludeTags "simple"  - искючение выполнение теста, который имеет тег simple, например
+    }
+}
+
+    task propertiesTests(type: Test) {
+    useJUnitPlatform{
+        includeTags "propertiesTests"
+    }
+}
