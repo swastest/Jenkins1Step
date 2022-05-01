@@ -15,15 +15,16 @@ public class TestBase {
 
     @BeforeAll
     static void setUp() {
-        String baseUrl = System.getProperty("baseUrl","https://demoqa.com");
-        String browserSize = System.getProperty("browserSize","1920x1080");
+        String baseUrl = System.getProperty("baseUrl", "https://demoqa.com");
+        String browserSize = System.getProperty("browserSize", "1920x1080");
         SelenideLogger.addListener("AllureSelenide", new AllureSelenide()); //Алюр лисенер
 
-      //  Configuration.baseUrl = System.getProperty("baseUrl", "https://demoqa.com"); // задать в дженкинс
+        //  Configuration.baseUrl = System.getProperty("baseUrl", "https://demoqa.com"); // задать в дженкинс
         Configuration.baseUrl = baseUrl;
-       // Configuration.browserSize = System.getProperty("browserSize", "1920x1080"); // задать в дженкинс
-       Configuration.browserSize = browserSize;
+        // Configuration.browserSize = System.getProperty("browserSize", "1920x1080"); // задать в дженкинс
+        Configuration.browserSize = browserSize;
         Configuration.remote = "https://user1:1234@selenoid.autotests.cloud/wd/hub";  //  https://логин:пароль@хост/веб-драйвер/и что то там
+
         //Добавить видео-пруф-аттач  и  это еще не все, так как надо добавить метод см. ниже в классе addAttachments
         DesiredCapabilities capabilities = new DesiredCapabilities(); // набор ключей и значений
         capabilities.setCapability("enableVNC", true); // трнаслировать видео - тру
@@ -33,7 +34,7 @@ public class TestBase {
 
     @AfterEach
     @DisplayName("Добавить пруфы")
-    void addAttachments (){
+    void addAttachments() {
         Attach.screenshotAs("Итоговый скрин");
         Attach.pageSource();
         Attach.browserConsoleLogs();
