@@ -17,10 +17,14 @@ public class TestBase {
     static void setUp() {
 
         SelenideLogger.addListener("AllureSelenide", new AllureSelenide()); //Алюр лисенер
-        Configuration.baseUrl = System.getProperty("baseUrl", "https://demoqa.com"); // задать в дженкинс
+     /*   Configuration.baseUrl = System.getProperty("baseUrl", "https://demoqa.com"); // задать в дженкинс
         Configuration.browserSize = System.getProperty("browserSize", "1920x1080"); // задать в дженкинс
         Configuration.remote = "https://user1:1234@selenoid.autotests.cloud/wd/hub";  //  https://логин:пароль@хост/веб-драйвер/и что то там
-
+*/
+        String propertyBrowserSize = System.getProperty("propertyBrowserSize","1980x1024");
+        String propertyBaseUrl = System.getProperty("propertyBaseUrl","https://demoqa.com");
+        Configuration.browserSize = propertyBrowserSize;
+        Configuration.baseUrl = propertyBaseUrl;
         //Добавить видео-пруф-аттач  и  это еще не все, так как надо добавить метод см. ниже в классе addAttachments
         DesiredCapabilities capabilities = new DesiredCapabilities(); // набор ключей и значений
         capabilities.setCapability("enableVNC", true); // трнаслировать видео - тру
