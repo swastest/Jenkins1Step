@@ -25,6 +25,7 @@ public class TestBase {
         String propertyBaseUrl = System.getProperty("propertyBaseUrl","https://demoqa.com");
         Configuration.browserSize = propertyBrowserSize;
         Configuration.baseUrl = propertyBaseUrl;
+        Configuration.remote = "https://user1:1234@selenoid.autotests.cloud/wd/hub";
         //Добавить видео-пруф-аттач  и  это еще не все, так как надо добавить метод см. ниже в классе addAttachments
         DesiredCapabilities capabilities = new DesiredCapabilities(); // набор ключей и значений
         capabilities.setCapability("enableVNC", true); // трнаслировать видео - тру
