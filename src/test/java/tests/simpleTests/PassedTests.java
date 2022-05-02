@@ -55,7 +55,7 @@ public class PassedTests {
     void saed() {
         String login = config.login();
         String password = config.password();
-        String message = "что то там логин " + login + "Что то там пароль " + password;
+        String message = "что то там логин " + login + " Что то там пароль " + password;
         System.out.println("Login " + login);
         System.out.println("Password " + password);
         System.out.println(message);
