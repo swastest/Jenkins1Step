@@ -18,8 +18,8 @@ public class TestDemoQa extends TestBase {
     @Tag ("demoQaForm")
     @DisplayName("Старая-добрая формаТест")
     void test1() {
-        String firstName = "Aren",
-                lastName = "Karapetyan",
+        String firstName = System.getProperty("firstName","Aren"),
+                lastName = System.getProperty("lastName","Karapetyan"),
                 email = "romashka@mail.ru",
                 tel = "8800200060",
                 subjectsInput = "Hindi",
