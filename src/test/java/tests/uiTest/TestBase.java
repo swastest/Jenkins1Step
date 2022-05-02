@@ -15,14 +15,10 @@ public class TestBase {
 
     @BeforeAll
     static void setUp() {
-//        String baseUrl = System.getProperty("baseUrl", "https://demoqa.com");
-//        String browserSize = System.getProperty("browserSize", "1920x1080");
-        SelenideLogger.addListener("AllureSelenide", new AllureSelenide()); //Алюр лисенер
 
-         Configuration.baseUrl = System.getProperty("baseUrl"); // задать в дженкинс
-//        Configuration.baseUrl = baseUrl;
-         Configuration.browserSize = System.getProperty("browserSize"); // задать в дженкинс
-//        Configuration.browserSize = browserSize;
+        SelenideLogger.addListener("AllureSelenide", new AllureSelenide()); //Алюр лисенер
+        Configuration.baseUrl = System.getProperty("baseUrl"); // задать в дженкинс
+        Configuration.browserSize = System.getProperty("browserSize"); // задать в дженкинс
         Configuration.remote = "https://user1:1234@selenoid.autotests.cloud/wd/hub";  //  https://логин:пароль@хост/веб-драйвер/и что то там
 
         //Добавить видео-пруф-аттач  и  это еще не все, так как надо добавить метод см. ниже в классе addAttachments
@@ -31,7 +27,7 @@ public class TestBase {
         capabilities.setCapability("enableVideo", true); // делать видео - тру
         Configuration.browserCapabilities = capabilities; // для более тонкой настройки драйвера, иногда подсказывают фрондендеры
     }
-
+//  "https://demoqa.com"     "1920x1080"
     @AfterEach
     @DisplayName("Добавить пруфы")
     void addAttachments() {
