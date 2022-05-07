@@ -41,7 +41,8 @@ tasks.withType(JavaCompile) {
 }
 
 tasks.withType(Test) {
-    systemProperties(System.getProperties()) // добавила эту строчку, чтобы можно было менять конфиги, передавая на входе, это типа швейцара на входе)))
+    systemProperties(System.getProperties())
+    // добавила эту строчку, чтобы можно было менять конфиги, передавая на входе, это типа швейцара на входе)))
     useJUnitPlatform()
 
     // чтобы логи были симпатичнее ТОЛЬКО В КОНСОЛЕ у нас (в алюре не используется, там свое)
@@ -61,13 +62,22 @@ task demoQaForm(type: Test) {
     }
 }
 
-    task propertiesTests(type: Test) {
-    useJUnitPlatform{
+task propertiesTests(type: Test) {
+    useJUnitPlatform {
         includeTags "propertiesTests"
     }
 }
-    task owner(type: Test) {
-    useJUnitPlatform{
+task owner(type: Test) {
+    useJUnitPlatform {
         includeTags "owner"
     }
 }
+
+task citilinc(type: Test) {
+    useJUnitPlatform {
+        includeTags "citilinc"
+    }
+}
+
+
+
