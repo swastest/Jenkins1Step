@@ -15,11 +15,10 @@ import static com.codeborne.selenide.Selectors.withTagAndText;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$$;
 import static io.qameta.allure.Allure.step;
-
+@Tag ("citilinc")
 public class SearchCardTest extends TestBaseCitilinc {
     @Test
     @Owner ("Kazakova")
-    @Tag ("citilinc")
     @DisplayName ("По Синитинку забавы ради")
     void test01() {
         step("Открыть главную страницу", ()->{
