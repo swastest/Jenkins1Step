@@ -11,6 +11,7 @@ import static com.codeborne.selenide.CollectionCondition.size;
 import static com.codeborne.selenide.Condition.attribute;
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byText;
+import static com.codeborne.selenide.Selectors.withTagAndText;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$$;
 import static io.qameta.allure.Allure.step;
@@ -36,8 +37,9 @@ public class SearchCardTest extends TestBaseCitilinc {
         });
         step("Проверка страницы", ()->{
             $(".Subcategory__header").shouldHave(text("Видеокарты"));
-            $("[title = 'Видеокарта Palit NVIDIA  GeForce RTX 3060," +
-                    "  PA-RTX3060 DUAL 12G,  12ГБ, GDDR6, LHR,  Ret [ne63060019k9-190ad]']").shouldHave(text("Видеокарта"));
+//            $("[title = 'Видеокарта Palit NVIDIA  GeForce RTX 3060," +
+//                    "  PA-RTX3060 DUAL 12G,  12ГБ, GDDR6, LHR,  Ret [ne63060019k9-190ad]']").shouldHave(text("Видеокарта"));
+//            $$("[data-rows-count=10 div]").first().$(".ProductCardHorizontal__header-block a").shouldHave(text("Видеокарта"));
         });
 
 
